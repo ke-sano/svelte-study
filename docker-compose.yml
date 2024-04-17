@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  node:
+    container_name: node
+    tty: true
+    build: ./build/docker/node
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./app:/app
+    environment:
+      - HOST=0.0.0.0
