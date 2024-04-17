@@ -4,7 +4,16 @@
   import Counter from './lib/Counter.svelte'
 </script>
 
-<main>
+<template lang="pug">
+  div | Hello
+</template>
+
+<style lang="stylus">
+  div
+    color red
+</style>
+
+<!-- <main>
   <div>
     <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
       <img src={viteLogo} class="logo" alt="Vite Logo" />
@@ -26,9 +35,9 @@
   <p class="read-the-docs">
     Click on the Vite and Svelte logos to learn more
   </p>
-</main>
+</main> -->
 
-<style>
+<!-- <style>
   .logo {
     height: 6em;
     padding: 1.5em;
@@ -44,4 +53,4 @@
   .read-the-docs {
     color: #888;
   }
-</style>
+</style> -->
