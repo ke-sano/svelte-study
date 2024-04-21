@@ -1,56 +1,77 @@
-<script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
-</script>
-
 <template lang="pug">
-  div | Hello
+  header.header
+    a.header-title(href="/") Svelte EC
+    nav
+      ul.header-links
+        li ようこそゲストさん
+        li
+          a(href="/cart") カート
+  
+  article.product
+    .product-main
+      .image-container
+        img(
+          src="https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-1.png"
+          alt="「Svelte Guide」表紙"
+        )
+
+  div
+    h2 Svelete Guide
+    dl
+      dt 価格
+      dd 3500円
+    div
+      button カートに入れる
+
+  footer
+    h3 関連商品
+    ul
+      li
+        a(href="/product/react-book") React Book
+      li
+        a(href="/product/vue-book") Vue Book
+      li
+        a(href="/product/angular-book") Angular Book
 </template>
 
 <style lang="stylus">
-  div
-    color red
+  :global(body)
+    margin 0
+    background-color #eee
+    padding 0
+  
+  .header
+    display flex
+    justify-content space-between
+    align-items center
+    margin 0 auto
+    background-color #fff
+    padding 0
+    width 100%
+    max-width 800px
+    height 50px
+    .header-title
+      font-weight bold
+    .header-links
+      display flex
+      gap 10px
+      margin 0
+      padding 0
+      list-style none
+  .product
+    margin 0 auto
+    background-color #fff
+    padding 15px
+    width 100%
+    max-width 800px
+    .product-main
+      display flex
+      flex-wrap wrap
+      gap 20px
+      .image-container
+        width 100%
+        max-width 400px
+        overflow hidden
+        img
+          width 100%
 </style>
-
-<!-- <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main> -->
-
-<!-- <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style> -->
