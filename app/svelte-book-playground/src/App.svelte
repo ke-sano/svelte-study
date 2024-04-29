@@ -1,3 +1,42 @@
+<script>
+  import Slider from './Slider.svelte';
+
+  let cart = [];
+
+  function addToCard(productId) {
+    cart = [...cart, productId];
+  }
+
+  let product = {
+    id: 'svelte-book',
+    name: 'Svelte Book',
+    price: 3500,
+    images: [
+      'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-1.png',
+      'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-2.png',
+      'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-3.png',
+    ],
+  };
+
+  let relatedProducts = [
+    {
+      id: 'react-book',
+      name: 'React Book',
+      price: 3500,
+    },
+    {
+      id: 'vue-book',
+      name: 'Vue Book',
+      price: 3500,
+    },
+    {
+      id: 'angular-book',
+      name: 'Angular Book',
+      price: 3500,
+    },
+  ];
+</script>
+
 <template lang="pug">
   header.header
     a.header-title(href="/") Svelte EC
@@ -10,28 +49,25 @@
   article.product
     .product-main
       .image-container
-        img(
-          src="https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-1.png"
-          alt="「Svelte Guide」表紙"
-        )
+        Slider(images!="{product.images}")
+      div
+        h2 {product.name}
+        dl
+          dt 価格
+          dd {product.price}
+        div
+          +if("!cart.includes(product.id)")
+            button(on:click!="{() => addToCard(product.id)}") カートに入れる
+            +else()
+              button(disabled) カートに追加済み
 
-  div
-    h2 Svelete Guide
-    dl
-      dt 価格
-      dd 3500円
-    div
-      button カートに入れる
-
-  footer
-    h3 関連商品
-    ul
-      li
-        a(href="/product/react-book") React Book
-      li
-        a(href="/product/vue-book") Vue Book
-      li
-        a(href="/product/angular-book") Angular Book
+    footer
+      h3 関連商品
+      ul
+        +each("relatedProducts as product")
+          li
+            a(href="/products/{product.id}") {product.name}
+            | &nbsp;- {product.price}円
 </template>
 
 <style lang="stylus">
@@ -46,7 +82,7 @@
     align-items center
     margin 0 auto
     background-color #fff
-    padding 0
+    padding 0 15px
     width 100%
     max-width 800px
     height 50px
