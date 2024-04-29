@@ -15,7 +15,7 @@
 </script>
 
 <template lang="pug">
-.slider
+  .slider
     img.slider-item.left(src="{images[leftIndex]}" alt="スライダー画像(左)")
     img.slider-item(src="{images[centerIndex]}" alt="スライダー画像")
     img.slider-item.right(src="{images[rightIndex]}" alt="スライダー画像(右)")
